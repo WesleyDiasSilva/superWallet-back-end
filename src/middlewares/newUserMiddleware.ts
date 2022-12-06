@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import { schemaNewUser } from "../models/newUserModel";
+import { findUser } from "../repositories/user/repositoryFindUser";
 
-export function middlewareNewUser(
+export async function middlewareNewUser(
   req: Request,
   res: Response,
   next: NextFunction
@@ -14,5 +15,12 @@ export function middlewareNewUser(
   if (validation.error) {
     return res.status(400).send(validation.error);
   }
-  next()
+
+  try {
+    const userFound = await findUser(email);
+    if (userFound.message) {
+      return res.status(401).send("E-mail already registred!");
+    }
+  } catch {}
+  next();
 }

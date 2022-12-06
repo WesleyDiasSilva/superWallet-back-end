@@ -1,8 +1,8 @@
 import { User } from "@prisma/client";
 import { prismaClient } from "../../database/connection";
-import { responseRepositoryAndService } from "../../interfaces/responseInterface";
+import { responseDefault } from "../../interfaces/responseDefault";
 
-interface findUser extends responseRepositoryAndService {
+interface findUser extends responseDefault {
   message: User | null;
 }
 
