@@ -12,18 +12,16 @@ const transporter = nodeMailer.createTransport({
 
 export async function serviceSendEmail(name: string, email: string) {
   try {
-    const mailSend = await transporter.sendMail({
-      subject: "Confirmação de cadastro!",
+    await transporter.sendMail({
+      subject: "Registration Confirmation!",
       html: `
-      Olá <strong>${name}</strong><br>
-      Sejá bem-vindo(a) a nossa plataforma de ecommerce, aqui você encontra os <strong>melhores jogos</strong> com os <strong>melhores preços</strong><br>
-      <br>
-      <a href="https://www.goole.com">Acesse já</a>
+      Hello <strong>${name}</strong><br>
+      Welcome to your super wallet<br>
+      Here you can record your income, expenses, write down dreams and analyze how your finances are doing. 
       `,
       from: "Wesley Dias <wesley_diaz8@outlook.com>",
       to: email,
     });
-    console.log(mailSend);
   } catch (err) {
     console.log(err);
   }

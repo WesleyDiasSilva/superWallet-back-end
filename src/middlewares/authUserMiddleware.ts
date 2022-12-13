@@ -17,10 +17,9 @@ export function middlewareAuth(
       process.env.SECRET_JWT ?? ""
     );
     req.body.user = validationToken;
-    console.log(validationToken);
     next();
-  } catch {
-    console.log();
+  } catch (err){
+
     res.status(404).send("Token Invalid!");
   }
 }

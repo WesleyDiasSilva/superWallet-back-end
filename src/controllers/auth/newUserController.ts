@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { serviceCreateUser } from "../services/users/serviceCreateUser";
+import { serviceCreateUser } from "../../services/users/serviceCreateUser";
 
 export async function controllerNewUser(
   req: Request,

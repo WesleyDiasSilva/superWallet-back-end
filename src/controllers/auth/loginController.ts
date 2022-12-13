@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { serviceFindUser } from "../services/users/serviceFindUser";
-import { serviceLogin } from "../services/users/serviceLoginUser";
+import { serviceFindUser } from "../../services/users/serviceFindUser";
+import { serviceLogin } from "../../services/users/serviceLoginUser";
 
 export async function controllerLogin(req: Request, res: Response) {
   const { email, password } = req.body;

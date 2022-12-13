@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { controllerLogin } from "../controllers/loginController";
-import { controllerLogout } from "../controllers/logoutController";
-import { controllerNewUser } from "../controllers/newUserController";
+import { controllerLogin } from "../controllers/auth/loginController";
+import { controllerLogout } from "../controllers/auth/logoutController";
+import { controllerNewUser } from "../controllers/auth/newUserController";
 import { middlewareAuth } from "../middlewares/authUserMiddleware";
 import { middlewareLogin } from "../middlewares/loginUserMiddleware";
 import { middlewareNewUser } from "../middlewares/newUserMiddleware";

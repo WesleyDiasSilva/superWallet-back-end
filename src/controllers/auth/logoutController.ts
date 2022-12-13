@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { serviceDeleteSession } from "../services/sessions/serviceDeleteSession";
+import { serviceDeleteSession } from "../../services/sessions/serviceDeleteSession";
 
 export async function controllerLogout(req: Request, res: Response) {
   try {
