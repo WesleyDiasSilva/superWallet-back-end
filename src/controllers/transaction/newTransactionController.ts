@@ -8,8 +8,7 @@ export async function newTransactionController(
   try {
     const transaction = req.body.locals;
     const { user } = req.body;
-    console.log(user);
-    const responseService = await serviceCreateTransaction(transaction);
+    const responseService = await serviceCreateTransaction({...transaction, authorId: user.id});
     if (responseService.status) {
       return res.sendStatus(201);
     }
