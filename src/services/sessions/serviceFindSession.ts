@@ -1,13 +1,14 @@
+import { respServiceQuery } from "../../interfaces/servicesInterfaces/responseServiceQueryInterface";
 import { findSession } from "../../repositories/session/repositoryFindSession";
 
-export async function serviceFindSession(email: string) {
+export async function serviceFindSession(email: string): Promise<respServiceQuery> {
   try {
     const session = await findSession(email);
-    if (!session.message) {
-      return { status: false, message: null };
+    if (!session.query) {
+      return { status: false, message: [{}] };
     }
-    return { status: true, message: session };
+    return { status: true, message: [session] };
   } catch {
-    return { status: false, message: null };
+    return { status: false, message: [{}] };
   }
 }

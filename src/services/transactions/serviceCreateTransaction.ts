@@ -7,8 +7,9 @@ export async function serviceCreateTransaction(
 ): Promise<respService> {
   try {
     transaction.value = transaction.value * 100;
-    const responseRepository = await createTransaction(transaction);
-    return { status: true, message: "created" };
+    const { status } = await createTransaction(transaction);
+    if (status) return { status: true, message: "created" };
+    return { status: false, message: "error" };
   } catch {
     return { status: false, message: "error" };
   }

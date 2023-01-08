@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 
 interface dataJWT {
+  id: number,
   email: string;
   name: string;
   image?: string;

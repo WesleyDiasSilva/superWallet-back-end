@@ -1,4 +1,5 @@
 import nodeMailer from "nodemailer";
+import { responseDefault } from "../../interfaces/responseDefault";
 
 const transporter = nodeMailer.createTransport({
   host: "smtp-mail.outlook.com",
@@ -10,7 +11,10 @@ const transporter = nodeMailer.createTransport({
   },
 });
 
-export async function serviceSendEmail(name: string, email: string) {
+export async function serviceSendEmail(
+  name: string,
+  email: string
+): Promise<responseDefault> {
   try {
     await transporter.sendMail({
       subject: "Registration Confirmation!",
@@ -22,7 +26,8 @@ export async function serviceSendEmail(name: string, email: string) {
       from: "Wesley Dias <wesley_diaz8@outlook.com>",
       to: email,
     });
+    return { status: true };
   } catch (err) {
-    console.log(err);
+    return { status: false };
   }
 }
