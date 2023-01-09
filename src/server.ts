@@ -3,12 +3,14 @@ import chalk from "chalk";
 import cors from "cors";
 import routeAuth from "./routes/authRoutes";
 import routeTransactions from "./routes/transactionRoutes";
+import routeCards from './routes/cardRoutes'
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(routeAuth);
 app.use(routeTransactions);
+app.use(routeCards)
 
 const port = process.env.PORT || 5000;
 app.listen(port, () =>

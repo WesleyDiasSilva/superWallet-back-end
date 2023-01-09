@@ -8,16 +8,16 @@ export async function controllerNewUser(
 ) {
   const { name, email, password, image } = req.body;
   try {
-    const createUser = await serviceCreateUser({
+    const {message, status} = await serviceCreateUser({
       name,
       email,
       password,
       image,
     });
-    if (createUser.status) {
-      return res.status(201).send(createUser.message);
+    if (status) {
+      return res.status(201).send(message);
     }
-    return res.status(400).send(createUser.message);
+    return res.status(400).send(message);
   } catch {
     return res.sendStatus(500);
   }

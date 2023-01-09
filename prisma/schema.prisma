@@ -16,8 +16,11 @@ model User {
   name         String
   password     String
   image        String? 
+  themeDark    Boolean  @default(false)
   createdAt    DateTime @default(now())
+  goals        Goals[]
   transactions Transaction[]
+  cards        Cards[]
 }
 
 model Session {
@@ -38,4 +41,23 @@ model Transaction {
   authorId       Int
 
   author         User @relation(fields: [authorId], references: [id])
+}
+
+model Cards {
+  id               Int @id @default(autoincrement())
+  surname          String
+  payment_day      Int
+  last_four_digits String
+  type             String
+  owner_id         Int
+  owner            User @relation(fields: [owner_id], references: [id])
+}
+
+model Goals {
+  id Int @id @default(autoincrement())
+  name String
+  value Int
+  type String
+  owner_id Int
+  owner User @relation(fields: [owner_id], references: [id])
 }

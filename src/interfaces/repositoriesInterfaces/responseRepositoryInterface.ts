@@ -1,4 +1,4 @@
-import { Transaction } from "@prisma/client";
+import { Cards, Transaction, User } from "@prisma/client";
 import { responseDefault } from "../responseDefault";
 
 export interface respRepoNull extends responseDefault {
@@ -11,4 +11,12 @@ export interface respRepoTransaction extends responseDefault {
 
 export interface respRepoTransactions extends responseDefault {
   query: Transaction[] | null
+}
+
+export interface respRepoUser extends responseDefault {
+  query: User | null;
+}
+
+export interface respRepoCard extends responseDefault {
+  query: Cards | null;
 }
