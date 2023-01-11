@@ -7,13 +7,11 @@ export async function serviceValidCard(
 ): Promise<respServiceQuery> {
   try {
     const { query } = await findCardSurname(surname);
-    if (!query) {
-      return { status: true, message: [{}] };
-    }
-    if (query.owner_id === owner_id) {
-      return { status: false, message: [{}] };
-    }
-    return { status: true, message: [query] };
+    console.log("Query: ", query);
+    const existCard = query?.filter((card) => card.owner_id === owner_id);
+    console.log("existCard: ", Boolean(existCard?.length))
+    if (existCard?.length) return { status: false, message: [{ ...existCard }] }; 
+    return { status: true, message: [{}] };
   } catch {
     return { status: false, message: [{}] };
   }

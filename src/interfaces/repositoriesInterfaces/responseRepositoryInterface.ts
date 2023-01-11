@@ -20,3 +20,7 @@ export interface respRepoUser extends responseDefault {
 export interface respRepoCard extends responseDefault {
   query: Cards | null;
 }
+
+export interface respRepoCards extends responseDefault {
+  query: Cards[] | null;
+}
