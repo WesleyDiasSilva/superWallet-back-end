@@ -28,3 +28,7 @@ export interface respRepoCards extends responseDefault {
 export interface respRepoGoal extends responseDefault {
   query: Goals | null;
 }
+
+export interface respRepoGoals extends responseDefault {
+  query: Goals[] | null;
+}
